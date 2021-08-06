@@ -2,8 +2,10 @@ var car;
 var carX = 550;
 var carY = 350;
 
+var stage = 0;
+
 function preload() {
-    car = loadImage( "car.png" );
+    car = loadImage("car.png");
 }
 
 function setup() {
@@ -29,7 +31,19 @@ function setup() {
 function draw() {
     setup();
 
-    image( car, carX, carY, 20, 36 );
+    image(car, carX, carY, 20, 36);
 
-    carY--;
+    switch (stage) {
+        case 0:
+            carY--;
+
+            if( carY == 20 )
+            {
+                stage = 1;
+            }
+            break;
+        case 1:
+            
+            break;
+    }
 }
