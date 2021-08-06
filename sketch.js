@@ -1,3 +1,11 @@
+var car;
+var carX = 550;
+var carY = 350;
+
+function preload() {
+    car = loadImage( "car.png" );
+}
+
 function setup() {
     createCanvas(600, 400);
 
@@ -10,13 +18,18 @@ function setup() {
     line(400, 75, 400, 200);
     line(400, 200, 425, 200);
     line(425, 200, 425, 325);
-    line(425, 325, 275, 325);
-    line(275, 325, 275, 75);
-    line(275, 75, 115, 75);
+    line(425, 325, 250, 325);
+    line(250, 325, 250, 75);
+    line(250, 75, 115, 75);
     line(115, 75, 115, 390);
-    
+    line(325, 10, 325, 250);
+    circle(340, 250, 75);
 }
 
 function draw() {
+    setup();
 
+    image( car, carX, carY, 20, 36 );
+
+    carY--;
 }
