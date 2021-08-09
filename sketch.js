@@ -1,6 +1,7 @@
 var car;
-var carX = 550;
+var carX = 540;
 var carY = 350;
+var carR = 0;
 
 var stage = 0;
 
@@ -31,19 +32,125 @@ function setup() {
 function draw() {
     setup();
 
-    image(car, carX, carY, 20, 36);
+    angleMode(DEGREES);
 
     switch (stage) {
         case 0:
             carY--;
 
-            if( carY == 20 )
+            if( carY == 90 )
             {
                 stage = 1;
             }
             break;
         case 1:
+            carR--;
+            carX -= 0.5;
+            carY -= 0.5;
+            if( carR == -90 )
+            {
+                stage = 2;
+            }
+            break;
+        case 2:
+            carX--;
+            if( carX == 390 )
+            {
+                stage = 3;
+            }
+            break;
+        case 3:
+            carR--;
+            carX -= 0.25;
+            carY += 0.5;
+            if( carR == -180 )
+            {
+                stage = 4;
+            }
+            break;
+        case 4:
+            carY++;
+            if( carY == 200 )
+            {
+                stage = 5;
+            }
+            break;
+        case 5:
+            carY += 0.5;
+            carX += 0.5;
+            carR = carR == -190 ? carR : carR - 1 ;
+
+            if( carY == 250 )
+            {
+                stage = 6;
+            }
+            break;
+        case 6:
+            carY += 0.5;
+            carX -= 0.5;
+            carR = carR == -90 ? carR : carR + 1 ;
             
+            if( carY == 330 )
+            {
+                stage = 7;
+            }
+            break;
+        case 7:
+            carY -= 0.5;
+            carX -= 0.5;
+            
+            carR = carR == 0 ? carR : carR + 1 ;
+            
+            if( carY == 250 )
+            {
+                stage = 8;
+            }
+            break;
+        case 8:
+            carY --;
+
+            if( carY == 60 )
+            {
+                stage = 9;
+            }
+            break;
+        case 9:
+            carR--;
+            carX -= 0.25;
+            carY -= 0.25;
+            if( carR == -90 )
+            {
+                stage = 10;
+            }
+            break;
+        case 10:
+            carX--;
+
+            if( carX < 100 )
+            {
+                stage = 11;
+            }
+            break;
+        case 11:
+            carR--;
+            carX -= 0.5;
+            carY += 0.5;
+            if( carR == -180 )
+            {
+                stage = 12;
+            }
+            break;
+        case 12:
+            carY++;
+            if( carY > 350 )
+            {
+                stage = 13;
+            }
             break;
     }
+
+    translate( carX, carY );
+    rotate( carR );
+
+    image(car, 0, 0, 20, 36);
 }
